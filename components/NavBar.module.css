@@ -1,0 +1,11 @@
+.nav {
+  background-color: tomato;
+}
+
+.nav > a {
+  text-decoration: none;
+}
+
+.active {
+  color: yellow;
+}
