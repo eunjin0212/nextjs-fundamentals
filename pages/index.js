@@ -1,19 +1,7 @@
-import { useEffect, useState } from 'react'
-
-const API_KEY = '3d85994113faadbad92f020ed39c18f4'
-
-export default function Home() {
-  const [movies, setMovies] = useState()
-  useEffect(() => {
-    (async () => {
-      const { results } = await (await fetch('/api/movies')).json()
-      setMovies(results)
-    })()
-  }, [])
+export default function Home({ results }) {
   return (
     <div className="container">
-      {!movies && <h4>Loading...</h4>}
-      {movies?.map((movie) => (
+      {results?.map((movie) => (
         <div className="movie" key={movie.id}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} />
@@ -43,4 +31,12 @@ export default function Home() {
       `}</style>
     </div>
   )
+}
+export async function getServerSideProps() {
+  const { results } = await (await fetch('http://localhost:3000/api/movies')).json()
+  return {
+    props: {
+      results,
+    }
+  }
 }
