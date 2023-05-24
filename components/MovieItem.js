@@ -1,12 +1,12 @@
-export default function MovieItem({ movie }) {
+export default function MovieItem({ movie, onClick }) {
   return (
-    <div className='movie'>
+    <div className='movie' onClick={onClick}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.original_title}
       />
-      <h4>{movie.original_title}</h4>
+      <h4>{movie.title}</h4>
       <style jsx>{`
         .movie img {
           max-width: 100%;
