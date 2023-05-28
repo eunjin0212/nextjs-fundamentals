@@ -1,6 +1,6 @@
-export default function MovieItem({ movie, onClick }) {
+export default function MovieItem({ movie }) {
   return (
-    <div className='movie' onClick={onClick}>
+    <div className='movie'>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

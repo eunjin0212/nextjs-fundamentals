@@ -1,32 +1,14 @@
 import MovieItem from "@/components/MovieItem";
-// import Link from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function Home({ results }) {
-  const router = useRouter()
-  const onClick = (movie) => {
-    router.push({
-      pathname: `/movies/${movie.id}`,
-      query: {
-        id: movie.id,
-        title: movie.title,
-        img: movie.poster_path,
-      },
-    }, `/movies/${movie.id}`)
-  }
   return (
     <div className='container'>
       {results?.map((movie) => (
-        // <Link href={{
-        //   pathname: `/movies/${movie.id}`,
-        //   query: {
-        //     id: movie.id,
-        //     title: movie.title,
-        //     img: movie.poster_path,
-        //   },
-        // }} key={movie.id} as={`movies/${movie.id}`}>
-          <MovieItem movie={movie} key={movie.id} onClick={() => onClick(movie)} />
-        // </Link>
+        <Link href={`/movies/${movie.title}/${movie.id}`} key={movie.id}>
+          <MovieItem movie={movie} key={movie.id} />
+        </Link>
       ))}
       <style jsx>{`
         .container {
