@@ -1,6 +1,5 @@
 import MovieItem from "@/components/MovieItem";
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export default function Home({ results }) {
   return (
